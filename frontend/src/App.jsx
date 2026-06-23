@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import StudentForm from "./pages/StudentForm";
+import ReadingAssessment from "./pages/ReadingAssessment";
 import Home from "./pages/Home";
 import Assessment from "./pages/Assessment";
 import Result from "./pages/Result";
 import Dashboard from "./pages/Dashboard";
+import WritingAssessment from "./pages/WritingAssessment";
 
 function App() {
   return (
@@ -13,7 +15,20 @@ function App() {
         <Route path="/assessment" element={<Assessment />} />
         <Route path="/result" element={<Result />} />
         <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+        <Route path="/register" element={<StudentForm />} />
+            <Route
+          path="/reading"
+          element={<ReadingAssessment />}
+          />
+
+          <Route
+        path="/writing"
+        element={<WritingAssessment />}
+      />
+
+      <Route path="/writing" element={<WritingAssessment />} />
+      <Route path="/result" element={<Result />} />
+        </Routes>
     </BrowserRouter>
   );
 }
