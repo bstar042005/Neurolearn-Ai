@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import "../styles/StudentForm.css";
 
 function StudentForm() {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ function StudentForm() {
     age: "",
     school: "",
     className: "",
+    gender: "",
+    language: "",
   });
 
   const handleChange = (e) => {
@@ -20,6 +23,19 @@ function StudentForm() {
   };
 
   const handleSubmit = async () => {
+    // Basic Validation
+    if (
+      !student.name ||
+      !student.age ||
+      !student.gender ||
+      !student.school ||
+      !student.className ||
+      !student.language
+    ) {
+      alert("Please fill all the fields.");
+      return;
+    }
+
     try {
       await API.post("/students", student);
 
@@ -34,52 +50,95 @@ function StudentForm() {
   };
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Student Registration</h1>
+    <div className="student-page">
+      <div className="student-container">
 
-      <input
-        type="text"
-        name="name"
-        placeholder="Student Name"
-        value={student.name}
-        onChange={handleChange}
-      />
-      <br />
-      <br />
+        <h1>Student Registration</h1>
 
-      <input
-        type="number"
-        name="age"
-        placeholder="Age"
-        value={student.age}
-        onChange={handleChange}
-      />
-      <br />
-      <br />
+        <p>
+          Fill in the student details before starting the assessment.
+        </p>
 
-      <input
-        type="text"
-        name="school"
-        placeholder="School Name"
-        value={student.school}
-        onChange={handleChange}
-      />
-      <br />
-      <br />
+        <div className="form-grid">
 
-      <input
-        type="text"
-        name="className"
-        placeholder="Class"
-        value={student.className}
-        onChange={handleChange}
-      />
-      <br />
-      <br />
+          <div className="input-group">
+            <label>Student Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Student Name"
+              value={student.name}
+              onChange={handleChange}
+            />
+          </div>
 
-      <button onClick={handleSubmit}>
-        Start Assessment
-      </button>
+          <div className="input-group">
+            <label>Age</label>
+            <input
+              type="number"
+              name="age"
+              placeholder="Enter Age"
+              value={student.age}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Gender</label>
+            <select
+              name="gender"
+              value={student.gender}
+              onChange={handleChange}
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div className="input-group">
+            <label>Class</label>
+            <input
+              type="text"
+              name="className"
+              placeholder="Enter Class"
+              value={student.className}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>School Name</label>
+            <input
+              type="text"
+              name="school"
+              placeholder="Enter School Name"
+              value={student.school}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Preferred Language</label>
+            <input
+              type="text"
+              name="language"
+              placeholder="English / Hindi"
+              value={student.language}
+              onChange={handleChange}
+            />
+          </div>
+
+        </div>
+
+        <div className="button-area">
+          <button onClick={handleSubmit}>
+            Start Assessment →
+          </button>
+        </div>
+
+      </div>
     </div>
   );
 }
