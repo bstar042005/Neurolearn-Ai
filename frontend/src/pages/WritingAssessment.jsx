@@ -1,84 +1,104 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/WritingAssessment.css";
 
 function WritingAssessment() {
+
   const navigate = useNavigate();
 
-  const [answers, setAnswers] = useState({
-    word1: "",
-    word2: "",
-    word3: "",
-    word4: "",
-    word5: "",
-  });
+  const [image, setImage] = useState(null);
 
-  const handleChange = (e) => {
-    setAnswers({
-      ...answers,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleImage = (e) => {
 
-  const submitAssessment = () => {
-    let mistakes = 0;
+    if (e.target.files[0]) {
 
-    if (answers.word1.toLowerCase() !== "ball") mistakes++;
-    if (answers.word2.toLowerCase() !== "dog") mistakes++;
-    if (answers.word3.toLowerCase() !== "book") mistakes++;
-    if (answers.word4.toLowerCase() !== "school") mistakes++;
-    if (answers.word5.toLowerCase() !== "friend") mistakes++;
+      setImage(URL.createObjectURL(e.target.files[0]));
 
-    navigate("/result", {
-      state: { mistakes },
-    });
+    }
+
   };
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Writing Assessment</h1>
 
-      <p>Type the following words correctly:</p>
+    <div className="writing-page">
 
-      <input
-        name="word1"
-        placeholder="ball"
-        onChange={handleChange}
-      />
-      <br /><br />
+      <div className="writing-container">
 
-      <input
-        name="word2"
-        placeholder="dog"
-        onChange={handleChange}
-      />
-      <br /><br />
+        <div className="progress">
 
-      <input
-        name="word3"
-        placeholder="book"
-        onChange={handleChange}
-      />
-      <br /><br />
+          <span>Step 3 of 4</span>
 
-      <input
-        name="word4"
-        placeholder="school"
-        onChange={handleChange}
-      />
-      <br /><br />
+          <div className="progress-bar">
 
-      <input
-        name="word5"
-        placeholder="friend"
-        onChange={handleChange}
-      />
-      <br /><br />
+            <div className="progress-fill"></div>
 
-      <button onClick={submitAssessment}>
-        Submit Assessment
-      </button>
+          </div>
+
+        </div>
+
+        <h1>Writing Assessment</h1>
+
+        <p className="instruction">
+          Write the sentence below on paper and upload a clear image.
+        </p>
+
+        <div className="sentence-box">
+
+          The quick brown fox jumps over the lazy dog.
+
+        </div>
+
+        <div className="upload-box">
+
+          <h3>Upload Handwriting Image</h3>
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImage}
+          />
+
+        </div>
+
+        {image && (
+
+          <div className="preview">
+
+            <h3>Preview</h3>
+
+            <img
+              src={image}
+              alt="Preview"
+            />
+
+          </div>
+
+        )}
+
+        <div className="navigation">
+
+          <button
+            className="back-btn"
+            onClick={() => navigate("/reading")}
+          >
+            ← Back
+          </button>
+
+          <button
+            className="next-btn"
+            onClick={() => navigate("/processing")}
+          >
+            Analyze →
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
+
   );
+
 }
 
 export default WritingAssessment;

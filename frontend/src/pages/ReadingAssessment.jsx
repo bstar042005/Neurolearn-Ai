@@ -1,63 +1,81 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/ReadingAssessment.css";
 
 function ReadingAssessment() {
-  const navigate = useNavigate();
 
-  const words = [
-    "Apple",
-    "Teacher",
-    "School",
-    "Friend",
-    "Butterfly",
-  ];
+    const navigate = useNavigate();
 
-  const [score, setScore] = useState(0);
+    const paragraph = `
+The little rabbit ran through the green forest looking for its friends.
+It jumped over small rocks, crossed a tiny stream, and finally found
+everyone playing happily under a big tree.
+`;
 
-  return (
-    <div style={{ padding: "40px" }}>
-      <h1>Reading Assessment</h1>
+    return (
 
-      <h3>Read these words aloud:</h3>
+        <div className="reading-page">
 
-      <ul>
-        {words.map((word, index) => (
-          <li key={index}>{word}</li>
-        ))}
-      </ul>
+            <div className="reading-container">
 
-      <br />
+                <div className="progress">
 
-      <button onClick={() => setScore(score + 1)}>
-        Mark Correct
-      </button>
+                    <span>Step 2 of 4</span>
 
-      <button
-        style={{ marginLeft: "10px" }}
-        onClick={() => setScore(score - 1)}
-      >
-        Mark Incorrect
-      </button>
+                    <div className="progress-bar">
 
-      <h2>Score: {score}</h2>
+                        <div className="progress-fill"></div>
 
-      <br />
+                    </div>
 
-      <button
-        onClick={() => navigate("/writing")}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#2563eb",
-          color: "white",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-        }}
-      >
-        Next Assessment
-      </button>
-    </div>
-  );
+                </div>
+
+                <h1>Reading Assessment</h1>
+
+                <p className="instruction">
+                    Read the paragraph below clearly and confidently.
+                </p>
+
+                <div className="reading-card">
+
+                    <p>{paragraph}</p>
+
+                </div>
+
+                <div className="record-buttons">
+
+                    <button className="record-btn">
+                        🎤 Start Recording
+                    </button>
+
+                    <button className="upload-btn">
+                        📁 Upload Audio
+                    </button>
+
+                </div>
+
+                <div className="navigation">
+
+                    <button
+                        className="back-btn"
+                        onClick={() => navigate("/assessment")}
+                    >
+                        ← Back
+                    </button>
+
+                    <button
+                        className="next-btn"
+                        onClick={() => navigate("/writing")}
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
 }
 
 export default ReadingAssessment;
