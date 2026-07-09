@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "../styles/StudentForm.css";
 import ProgressBar from "../components/common/ProgressBar";
+import Button from "../components/common/Button";
 
 function StudentForm() {
   const navigate = useNavigate();
@@ -139,9 +140,11 @@ function StudentForm() {
         </div>
 
         <div className="button-area">
-          <button onClick={handleSubmit}>
-            Start Assessment →
-          </button>
+          <Button
+              text="Start Assessment →"
+              onClick={handleSubmit}
+              variant="primary"
+          />
         </div>
 
       </div>

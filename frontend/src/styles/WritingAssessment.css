@@ -10,41 +10,19 @@
   background: white;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
-}
-
-.progress {
-  margin-bottom: 30px;
-}
-
-.progress span {
-  font-weight: 600;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #e5e7eb;
-  border-radius: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  width: 75%;
-  height: 100%;
-  background: #2563eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .writing-container h1 {
   text-align: center;
   color: #2563eb;
+  margin-bottom: 10px;
 }
 
 .instruction {
   text-align: center;
   color: #666;
-  margin: 20px 0;
+  margin: 20px 0 30px;
 }
 
 .sentence-box {
@@ -54,6 +32,7 @@
   text-align: center;
   font-size: 22px;
   font-weight: 600;
+  color: #1f2937;
   margin-bottom: 30px;
 }
 
@@ -64,64 +43,59 @@
   text-align: center;
 }
 
+.upload-box h3 {
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
 .upload-box input {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .preview {
-  margin-top: 30px;
+  margin-top: 35px;
   text-align: center;
+}
+
+.preview h3 {
+  margin-bottom: 20px;
 }
 
 .preview img {
   max-width: 100%;
   width: 350px;
   border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .navigation {
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
-.navigation button {
-  padding: 14px 30px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .writing-container {
+    padding: 25px;
+  }
+
+  .sentence-box {
+    font-size: 20px;
+  }
 }
 
-.back-btn {
-  background: #d1d5db;
-}
+@media (max-width: 480px) {
+  .writing-container {
+    padding: 20px;
+  }
 
-.next-btn {
-  background: #2563eb;
-  color: white;
-}
+  .sentence-box {
+    font-size: 18px;
+    padding: 20px;
+  }
 
-@media(max-width:768px){
-
-.writing-container{
-padding:25px;
-}
-
-}
-
-@media(max-width:480px){
-
-.navigation{
-flex-direction:column;
-gap:15px;
-}
-
-.navigation button{
-width:100%;
-}
-
-.sentence-box{
-font-size:18px;
-}
-
+  .navigation {
+    flex-direction: column;
+  }
 }
