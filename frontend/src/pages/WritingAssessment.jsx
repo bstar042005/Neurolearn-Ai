@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/WritingAssessment.css";
+import ProgressBar from "../components/common/ProgressBar";
 
 function WritingAssessment() {
 
@@ -24,17 +25,10 @@ function WritingAssessment() {
 
       <div className="writing-container">
 
-        <div className="progress">
-
-          <span>Step 3 of 4</span>
-
-          <div className="progress-bar">
-
-            <div className="progress-fill"></div>
-
-          </div>
-
-        </div>
+        <ProgressBar
+            step={3}
+            totalSteps={4}
+        />
 
         <h1>Writing Assessment</h1>
 

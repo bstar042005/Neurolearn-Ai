@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Processing.css";
+import ProgressBar from "../components/common/ProgressBar";
 
 function Processing() {
 
@@ -24,13 +25,18 @@ function Processing() {
 
             <div className="processing-card">
 
-                <h1>Analyzing Assessment</h1>
+            <ProgressBar
+                step={4}
+                totalSteps={4}
+            />
 
-                <p>
-                    Our AI is analyzing the student's reading and writing performance.
-                </p>
+            <h1>Analyzing Assessment</h1>
 
-                <div className="loader"></div>
+            <p>
+                Our AI is analyzing the student's reading and writing performance.
+            </p>
+
+            <div className="loader"></div>
 
                 <div className="steps">
 

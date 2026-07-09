@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/ReadingAssessment.css";
+import ProgressBar from "../components/common/ProgressBar";
 
 function ReadingAssessment() {
 
@@ -16,18 +17,10 @@ everyone playing happily under a big tree.
         <div className="reading-page">
 
             <div className="reading-container">
-
-                <div className="progress">
-
-                    <span>Step 2 of 4</span>
-
-                    <div className="progress-bar">
-
-                        <div className="progress-fill"></div>
-
-                    </div>
-
-                </div>
+                <ProgressBar
+                    step={2}
+                    totalSteps={4}
+                />
 
                 <h1>Reading Assessment</h1>
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "../styles/StudentForm.css";
+import ProgressBar from "../components/common/ProgressBar";
 
 function StudentForm() {
   const navigate = useNavigate();
@@ -55,9 +56,14 @@ function StudentForm() {
 
         <h1>Student Registration</h1>
 
-        <p>
-          Fill in the student details before starting the assessment.
-        </p>
+          <ProgressBar
+            step={1}
+            totalSteps={4}
+          />
+
+          <p>
+            Fill in the student details before starting the assessment.
+          </p>
 
         <div className="form-grid">
 
