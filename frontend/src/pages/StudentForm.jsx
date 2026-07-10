@@ -25,7 +25,6 @@ function StudentForm() {
   };
 
   const handleSubmit = async () => {
-    // Basic Validation
     if (
       !student.name ||
       !student.age ||
@@ -39,7 +38,10 @@ function StudentForm() {
     }
 
     try {
-      await API.post("/students", student);
+      const response = await API.post("/students", student);
+
+      // Save Student ID
+      localStorage.setItem("studentId", response.data._id);
 
       alert("Student Registered Successfully");
 

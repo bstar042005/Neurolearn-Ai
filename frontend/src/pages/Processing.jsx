@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Processing.css";
 import ProgressBar from "../components/common/ProgressBar";
-
+import API from "../services/api";
 function Processing() {
 
     const navigate = useNavigate();
