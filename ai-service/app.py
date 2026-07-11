@@ -1,6 +1,11 @@
 from fastapi import FastAPI, UploadFile, File
+from utils.image_processing import preprocess_image
+from utils.feature_extraction import extract_features
+from utils.text_analysis import analyze_text
+from utils.ocr import extract_text
 import shutil
-import os
+import os\
+
 
 app = FastAPI(
     title="NeuroLearn AI Service",
@@ -28,12 +33,24 @@ async def predict(file: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
+    processed_image = preprocess_image(file_path)
+    features = extract_features(processed_image)
+    text = extract_text(file_path)
+    analysis = analyze_text(text)
+
+    print(analysis)
+
+    print("Extracted Text:")
+    print(text)
+
+    print(features)
+
+    print("✅ Image Processed Successfully")
+
     return {
-        "success": True,
-        "filename": file.filename,
-        "prediction": {
-            "riskLevel": "Low",
-            "confidence": 92,
-            "message": "AI model integration pending"
-        }
-    }
+    "success": True,
+    "filename": file.filename,
+    "ocrText": text,
+    "analysis": analysis,
+    "features": features
+}
